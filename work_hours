@@ -1,0 +1,10 @@
+#!/bin/bash
+hour=$((18-$(date +"%H")));
+minute=$((60-$(date +"%M")));
+echo "You need work $hour:$minute";
+
+
+
+
+
+
