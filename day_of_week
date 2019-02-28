@@ -1,4 +1,5 @@
 #!/bin/bash
+#Создать и проверить работу функции спрашивающей число, месяц и год и говорящей какой это день недели
 echo -n  "Enter date month: ";
 read month;
 echo -n  "Enter date day: ";
