@@ -1,0 +1,10 @@
+#!/bin/bash
+echo -n  "Enter date month: ";
+read month;
+echo -n  "Enter date day: ";
+read day;
+echo -n  "Enter date year: ";
+read year;
+echo -n "Day of week: ";
+
+echo $(date --date=$month/$day/$year +%A);
