@@ -8,9 +8,11 @@ read secondN;
 if [ $firstN -gt $secondN ]
 then
 echo "number first bigger"
+echo $firstN;
 elif [ $firstN -eq $secondN ]
 then
 echo "numbers equal";
 else
 echo "number second bigger";
+echo $secondN; # out22
 fi 
