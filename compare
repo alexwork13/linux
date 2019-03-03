@@ -1,0 +1,16 @@
+#!/bin/bash
+# Создать скрипт, поочередно запрашивающий два числа и сравнивающий их.
+echo -n "Enter first number: ";
+read firstN;
+echo -n "Enter second number: ";
+read secondN;
+
+if [ $firstN -gt $secondN ]
+then
+echo "number first bigger"
+elif [ $firstN -eq $secondN ]
+then
+echo "numbers equal";
+else
+echo "number second bigger";
+fi 
