@@ -1,0 +1,31 @@
+      SSMTP — альтернатива sendmail для отправки почты, позволяет настроить отправку через сторонние почтовые сервера.
+      Для установки в используется команда:
+      
+sudo apt-get install ssmtp mailutils
+
+      Далее необходимо открыть в любом текстовом редакторе файл /etc/ssmtp/ssmtp.conf
+
+sudo nano /etc/ssmtp/ssmtp.conf
+      Закомментируем все и настроим как показано ниже на примере:
+
+root=TEST@gmail.com
+mailhub=smtp.gmail.com:587
+hostname=smtp.gmail.com:587
+UseSTARTTLS=YES
+AuthUser=TEST@gmail.com
+AuthPass=PASSWORD
+FromLineOverride=YES
+      
+      Если использовать почту Google, то вероятно придется разрешить «Ненадежные приложения» в настройках https://myaccount.google.com/security.
+
+      Также откроем в текстовом редакторе файл /etc/ssmtp/revaliases:
+      
+sudo nano /etc/ssmtp/revaliases
+      И добавим:
+
+root:TEST@gmail.com:smtp.gmail.com:587
+      Попробуем отправить письмо на указанный адрес 
+
+echo "Hello" | admin@example.com
+
+      Письма должны отправляться с адреса указанного в файле /etc/ssmtp/ssmtp.conf.
