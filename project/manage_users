@@ -22,6 +22,8 @@ sudo useradd –d /home/leopold –m –G sambashare,semaev leopold ;
 sudo passwd leopold
       (заблокировать учетную запись Леопольда);
 sudo usermod –L leopold
+sudo usermod –s /bin/dash user_name   - изменить оболочку для пользователя
+
       (удалить пользователя Лепольд и его домашнюю папку).
 sudo userdel –r leopold 
 
