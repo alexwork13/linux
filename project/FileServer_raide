@@ -1,0 +1,32 @@
+                                                        Файловый сервер
+ 
+ Создание программного raide массива
+ Добавить в систему 2 диска,  проверить их добавление в системе
+      fdisk -l
+ Создать разделы на дисках
+      fdisk /dev/sdb
+      fdisk /dev/sdc
+ (-n -создать раздел
+  -t - выбрать тип fd)
+  
+ Установка утилиты программного рейда
+      apt-get install mdadm
+ Добавление дисков в рейд
+      mdadm  --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdb1 /dev/sdc1
+ Проверка созданого рейда (его готовности)
+      mdadm --detail --scan --verbose
+      cat /proc/mdstat
+ Конфигурирование файла /etc/mdadm/mdadm.conf 
+      echo "DEVICE partitions" >> /etc/mdadm/mdadm.conf 
+      mdadm --detail --scan --verbose | awk '/ARRAY/ {print}' >> /etc/mdadm/mdadm.conf
+ Создание раздела на рейде
+      fdisk /dev/md0
+ Форматирование раздела
+      mkfs.ext4 /dev/md0p1 
+      
+  
+
+ 
+
+ 
+                                                        
