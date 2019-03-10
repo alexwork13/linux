@@ -51,7 +51,32 @@
 Проверить добавление и состояние 
        mdadm --detail /dev/md0
        cat /proc/mdstat
+---------------------------------------------------------------------------------------------------------
 
+                                                SAMBA
+        apt-get install samba
+ 
+ Конфигурируем /etc/samba/smb.conf
+ 
+ [raid]
+	comment = Folder
+	path = /home/testuser/raid
+	inherit acls = yes
+	writable = yes
+	valid users = testuser
+	read list = testuser
+	write list = testuser
+
+Проверяем настройки самбы
+        testparm
+        
+Добавляем пользователя для работы с самбой
+        smbpasswd
+
+ Перезапускаем сервис samba
+        /etc/init.d/smbd
+        
+     
 
 
 
