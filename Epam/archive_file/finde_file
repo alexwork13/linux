@@ -1,0 +1,19 @@
+#!/bin/bash
+
+for var1 in $(cat ./list)
+do
+var=$(echo $var1 | grep -oE '\..*$')
+case $var in
+
+.tar)
+echo "tar xvf $var1" ;;
+
+.tar.gz)
+echo "tar xvfz $var1" ;;
+
+*)
+echo "other $var1" ;;
+esac
+
+done
+
