@@ -1,0 +1,41 @@
+#!/bin/bash
+#echo "Enter mask"
+read -p "Enter mask: " Emask
+
+x1=$(echo $Emask | cut -f 1 -d . -s)
+x2=$(echo $Emask | cut -f 2 -d . -s)
+x3=$(echo $Emask | cut -f 3 -d . -s)
+x4=$(echo $Emask | cut -f 4 -d . -s)
+
+function myfunc {
+if (echo "$1.$2.$3.$4" | grep -E -q "^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$")
+then
+
+if ( echo $1 | grep -E -q "0|[0-2][2459][02458]" ) && ( echo $2 | grep -E -q "0|[0-2][2459][02458]" ) && ( echo $3 | grep -E -q "0|[0-2][2459][02458]" ) && ( echo $4 | grep -E -q "0|[0-2][2459][02458]" )
+then
+
+mask="$x1.$x2.$x3.$x4"
+echo "Mask: $mask"
+echo "Wildcard mask: $((255-$x1)).$((255-$x2)).$((255-$x3)).$((255-$x4))"
+else
+echo "Non valid mask"
+fi
+
+
+else
+echo "Mask has non-numeric values"
+fi
+}
+
+
+
+myfunc $x1 $x2 $x3 $x4
+#echo $var
+#if [ $var -eq "a" ]
+#then
+#trap "echo ' Trapped Ctrl-C'" SIGINT
+#fi
+
+
+
+
