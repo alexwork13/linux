@@ -1,5 +1,5 @@
 #!/bin/bash
-#echo "Enter mask"
+
 read -p "Enter mask: " Emask
 
 x1=$(echo $Emask | cut -f 1 -d . -s)
@@ -21,20 +21,13 @@ else
 echo "Non valid mask"
 fi
 
-
 else
 echo "Mask has non-numeric values"
 fi
 }
 
-
-
 myfunc $x1 $x2 $x3 $x4
-#echo $var
-#if [ $var -eq "a" ]
-#then
-#trap "echo ' Trapped Ctrl-C'" SIGINT
-#fi
+
 
 
 
