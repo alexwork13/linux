@@ -98,7 +98,8 @@ git pull + адрес репозитория  применятся все изм
 удалить тег коммита
       git tag -d oops
       
-      
+      git reset HEAD -- filename    -  (unstages the file)
+      git checkout -- filename      -  (undoes your changes)     
       
 ------------------------------------- Получение списка произведенных изменений — функция команды --------------------------
       git log
