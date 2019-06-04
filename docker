@@ -3,7 +3,7 @@
 docker engine           -  сама установка docker
 docker container        -  прототип виртуальной машины, контейнер
 docker image            -  образ контейнера
-docker file             -  файл в котором описан docker image
+docker file (Dockerfile)           -  файл в котором описан docker image
 
 
 
@@ -12,3 +12,20 @@ docker file             -  файл в котором описан docker image
 sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+docker ps             -  список запущеных контейнеров
+-a                       все
+--format (docker ps --format '{{.Names}}\t{{.Image}}')  формат вывода
+
+docker image ls       -  спимок всех локальных образов
+docker container ls   -  спимок всех запущеных контейнеров, если уже не работает + параметр --all
+--all
+
+docker build          - создание образа (с указанием тэга)
+--tag(-t)
+(docker build --tag=friendlyhello . )
+
+docker run friendlyhello - запуск контейнера (-d   -  в фоне
+-d -p 4000:80                                 -з   -  перенаправление портов внешний : внутрений
+
+docker login          -  залогинится на docker hub
