@@ -13,19 +13,25 @@ sudo apt-get install apt-transport-https ca-certificates curl software-propertie
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 
+
 docker ps             -  список запущеных контейнеров
 -a                       все
 --format (docker ps --format '{{.Names}}\t{{.Image}}')  формат вывода
 
-docker image ls       -  спимок всех локальных образов
-docker container ls   -  спимок всех запущеных контейнеров, если уже не работает + параметр --all
---all
-
-docker build          - создание образа (с указанием тэга)
---tag(-t)
-(docker build --tag=friendlyhello . )
-
-docker run friendlyhello - запуск контейнера (-d   -  в фоне
--d -p 4000:80                                 -з   -  перенаправление портов внешний : внутрений
-
 docker login          -  залогинится на docker hub
+
+docker build -t(--tag) friendlyhello .                  создать образ в текущей дериктории с Dockerfile
+docker run -p 4000:80 friendlyhello                     запустить "friendlyhello" пробросив порт 4000(внешний) to 80(внутрений)
+docker run -d -p 4000:80 friendlyhello                  + в фоновом режиме
+docker container ls                                     отображает все запущеные контейненры
+docker container ls -a                                  отображает все контейненры, даже те что не запущеные
+docker container stop <hash>                            останавливает указаный контейнер
+docker container kill <hash>                            убивает указаный контейнер
+docker container rm <hash>                              удаляет указаный контейнер 
+docker container rm $(docker container ls -a -q)        удаляет все контейнеры
+docker image ls -a                                      отображает все образы
+docker image rm <image id>                              удаляет указаный образ
+docker image rm $(docker image ls -a -q)                удаляет все образы
+docker tag <image> username/repository:tag              указать тег <image> для загрузки на registry
+docker push username/repository:tag                     закачать указаный тегированый образ registry
+docker run username/repository:tag                      запустить образ с указаного registry
