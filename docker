@@ -22,16 +22,27 @@ docker login          -  залогинится на docker hub
 
 docker build -t(--tag) friendlyhello .                  создать образ в текущей дериктории с Dockerfile
 docker run -p 4000:80 friendlyhello                     запустить "friendlyhello" пробросив порт 4000(внешний) to 80(внутрений)
+                                                        -P (все порты)
 docker run -d -p 4000:80 friendlyhello                  + в фоновом режиме
+docker run -it image_name bash(sh)                      интерактивный tty контейнера
 docker container ls                                     отображает все запущеные контейненры
 docker container ls -a                                  отображает все контейненры, даже те что не запущеные
-docker container stop <hash>                            останавливает указаный контейнер
+docker container stop <hash> (container_name)           останавливает указаный контейнер
 docker container kill <hash>                            убивает указаный контейнер
 docker container rm <hash>                              удаляет указаный контейнер 
 docker container rm $(docker container ls -a -q)        удаляет все контейнеры
+docker rm $(docker ps -a -q -f status=exited)
+docker container prune
 docker image ls -a                                      отображает все образы
 docker image rm <image id>                              удаляет указаный образ
 docker image rm $(docker image ls -a -q)                удаляет все образы
 docker tag <image> username/repository:tag              указать тег <image> для загрузки на registry
 docker push username/repository:tag                     закачать указаный тегированый образ registry
 docker run username/repository:tag                      запустить образ с указаного registry
+
+
+
+                                    DOCKERFILE
+                                    
+ 
+
