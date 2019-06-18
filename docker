@@ -47,7 +47,7 @@ docker image rm $(docker image ls -a -q)                удаляет все о
 docker tag <image> username/repository:tag              указать тег <image> для загрузки на registry
 docker push username/repository:tag                     закачать указаный тегированый образ registry
 docker run username/repository:tag                      запустить образ с указаного registry
-
+docker stats                                            мониторинг статуса контейнира
 
 
                                     DOCKERFILE
