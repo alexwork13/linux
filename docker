@@ -39,7 +39,7 @@ docker container stop <hash> (container_name)           останавливае
 docker container kill <hash>                            убивает указаный контейнер
 docker container rm <hash>                              удаляет указаный контейнер 
 docker container rm $(docker container ls -a -q)        удаляет все контейнеры
-docker rm $(docker ps -a -q -f status=exited)
+docker rm -f $(docker ps -aq)
 docker container prune
 docker image ls -a                                      отображает все образы
 docker image rm <image id>                              удаляет указаный образ
