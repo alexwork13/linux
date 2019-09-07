@@ -180,11 +180,18 @@ git clean -dxf  -  удалит все неотслежуемые файлы и 
     
                                                      Слитие веток
                                 
-                            Merge                                                   rebase
-    git checkout master # переходим на ветку master             git checkout feature # переходим на ветку feature
-    git merge feature # вливаем в master ветку feature          git rebase master # меняем основание ветки feature
+                            Merge                                                   
+    git checkout master # переходим на ветку master             
+    git merge feature # вливаем в master ветку feature          
 
     
+                           rebase
+    git checkout feature      - переходим на ветку feature (все изменения которые выполнены с момента pull, все коммиы, 
+                                будут перемещены у временную область)
+    git rebase master         - добавляет все изменения, которые были в master (все коммиты с роздвоения ветки)
+                                и добавляем все изменения с временной области feature
+                                (после чего можно перейти в ветку master и сделать merge)
+                                  
                                                  Слияние может быть: 
     
     - fast-forward    -   когда после pull некто не внес изменения, ветка просто мержется
