@@ -163,12 +163,20 @@ git clean -dxf  -  удалит все неотслежуемые файлы и 
 напрямую связанные с удаленными ветками.
 Работают команды git pull, git push, git fetch
      
-    git branch # Посмотрите список локальных веток (звездочкой помечена текущая ветка)
-    git branch <branch_name> # создать ветку
-    git checkout <branch_name> # перейти в ветку
-    git checkout -b <branch_name> # создать и перейти  
-    git branch -d <branch_name>  # удаление ветки 
-    git log --oneline --decorate  # посмотреть на которой из веток сейчас HEAD (указатель)
+    git branch                       - Посмотрите список локальных веток (звездочкой помечена текущая ветка)
+    git branch -r                    - Посмотрите список удаленных веток 
+    git branch <branch_name>         - создать ветку <branch_name>
+    git checkout <branch_name>       - перейти в ветку <branch_name>
+    git checkout -b <branch_name>    - создать и перейти на ветку <branch_name> 
+    git branch -d <branch_name>      - удаление ветки <branch_name>
+    git branch -D <branch_name>      - удаление ветки <branch_name>, если были сделаны в ней коммиты но она небыла смержена
+                                       (forced delete)
+    git log --oneline --decorate     - посмотреть на которой из веток сейчас HEAD (указатель)
+    git push --delete <remote_branch_name>      - удаление удаленной ветки <remote_branch_name> на удаленном репозитории
+    
+    После pull с репозитория где появилась новая ветка, она просто скачивается, но не отображается с помощью git branche,
+    необходимо вручную на нее переключится (переключится на скаченую ветку):
+          git checkout <branch_name>
     
                                                      Слитие веток
                                 
@@ -176,7 +184,11 @@ git clean -dxf  -  удалит все неотслежуемые файлы и 
     git checkout master # переходим на ветку master             git checkout feature # переходим на ветку feature
     git merge feature # вливаем в master ветку feature          git rebase master # меняем основание ветки feature
 
-                                        
+    
+                                                 Слияние может быть: 
+    
+    - fast-forward    -   когда после pull некто не внес изменения, ветка просто мержется
+    - recursiv        -   когда после pull были уже занесены изменения, создается дополнительный коммит "merge commit"
 
 
 При переключении с ветки на ветку если в stage остались не закоммиченые файлы то их можно 
