@@ -1,0 +1,25 @@
+powershell 
+set-alias k kubectl
+
+bash
+alias k=kubectl
+
+
+k get pods
+k get nodes
+
+k run hello --generator=run-pod/v1 --image=nginx --port=80
+k port-forward hello 7777:80
+
+k describe pods hello
+
+k delete pods hello
+
+k logs hello
+
+k exec -it hello bash
+
+k apply -f myfile.yaml     - create object from manifest
+k delete -f myfile.yaml
+
+
