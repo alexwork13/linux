@@ -23,4 +23,13 @@ k apply -f myfile.yaml     - create object from manifest
 k delete -f myfile.yaml
 
 kubectl edit pod redis 
-kubectl apply  pod redis    для создания и обновления ресурсов
+kubectl apply (create)  pod redis    для создания и обновления ресурсов
+
+--- ReplicaSet ---
+k create -f replica.yaml
+k scale replicaset new-replica --replicas=2
+
+
+
+
+
