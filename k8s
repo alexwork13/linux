@@ -33,6 +33,12 @@ k scale replicaset new-replica --replicas=2
 
 kubectl run nginx --image=nginx --restart=Never                      Create an NGINX Pod
 
+--- Set current namespace ---
+kubectl config set-context --current --namespace=<insert-namespace-name-here>
+
+
+
+
 kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml    Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
 
 
