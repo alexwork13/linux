@@ -85,3 +85,7 @@ ENTRYPOINT["sleep"]   ->    command:["sleep2"]
 CMD["5"]              ->    arg:["10"]
 
 
+Add file (folder) into conteiner from machine 
+kubectl cp .\Downloads\app.zip rte-c759b4c4b-skmp7:/home/app.zip  --insecure-skip-tls-verify=true
+
+
