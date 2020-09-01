@@ -3,13 +3,13 @@ set-alias k kubectl
 
 bash
 alias k=kubectl
-
-
+                                                 ________________________________________________________________________________________________
+                                                 ____________________________________________POD_________________________________________________
 k get pods
 k get nodes
 
-k run hello --generator=run-pod/v1 --image=nginx --port=80
-k port-forward hello 7777:80
+k run hello --generator=run-pod/v1 --image=nginx --port=80           создать под и окрыть порт 80
+k port-forward hello 7777:80                                         пробросить порт 80 контейнера в 7777 порт хоста (ноды)
 
 k describe pods hello
 
@@ -19,19 +19,20 @@ k logs hello
 
 k exec -it hello bash
 
-k apply -f myfile.yaml     - create object from manifest
+k apply -f myfile.yaml                                               create object from manifest
 k delete -f myfile.yaml
 
 kubectl edit pod redis 
-kubectl apply (create)  pod redis    для создания и обновления ресурсов
+kubectl apply (create)  pod redis                                    для создания и обновления ресурсов
 
---- ReplicaSet ---
+kubectl run nginx --image=nginx --restart=Never                      Create an NGINX Pod
+________________________________________________________________________________________________________________________________________________________
+
+__________________________________________________________________________ ReplicaSet___________________________________________________________________
 k create -f replica.yaml
 k scale replicaset new-replica --replicas=2
 
---- POD --- 
 
-kubectl run nginx --image=nginx --restart=Never                      Create an NGINX Pod
 
 --- Set current namespace ---
 kubectl config set-context --current --namespace=<insert-namespace-name-here>
