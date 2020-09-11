@@ -38,8 +38,11 @@ kubectl get pod <pod-name> -o yaml > pod-definition.yaml             extract the
 ________________________________________________________________________________________________________________________________________________________
 
 __________________________________________________________________________ ReplicaSet___________________________________________________________________
-k create -f replica.yaml
-k scale replicaset new-replica --replicas=2
+k create -f replicaset-file.yaml
+k scale replicaset --replicas=2 replicaset(type) new-replica(name)
+k scale --replicas=2 -f replicaset-file.yaml
+k replace -f replicaset-file.yaml
+
 
 
 
