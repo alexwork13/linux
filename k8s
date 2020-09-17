@@ -3,6 +3,14 @@ set-alias k kubectl
 
 bash
 alias k=kubectl
+
+
+for test that create resource:
++ --dry-run=client                                      - to check configuration
+  --dry-run=client -o yaml                              - to have output yaml in console
+  --dry-run=client -o yaml > file.yaml                  - to have output yaml in file.yaml
+  
+  
 _________________________________________________________________________________________________________________________________________________________________________________
                                                  _________________________________________Cluster________________________________________________
 k cluster-info
