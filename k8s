@@ -23,8 +23,9 @@ k get pods
 k get pods -o wide                                                   show on what node run pod
 k get nodes
 
-k run hello --generator=run-pod/v1 --image=nginx --port=80           создать под и окрыть порт 80
+k run hello --image=nginx --port=80 -l tier=db                       создать под и окрыть порт 80, лейбл -l
 k port-forward hello 7777:80                                         пробросить порт 80 контейнера в 7777 порт хоста (ноды)
+kubectl run redis --image=redis:alpine -l tier=db
 
 k describe pods hello
 
@@ -52,23 +53,32 @@ k scale --replicas=2 -f replicaset-file.yaml
 k replace -f replicaset-file.yaml
 
 
+________________________________________________________________________________________________________________________________________________________
+________________________________________________________________________Service_________________________________________________________________________
+kubectl expose pod redis --port=6379 --name redis-service              Create a service redis-service to expose the redis application within the cluster on port 6379
 
 
---- Set current namespace ---
-kubectl config set-context --current --namespace=<insert-namespace-name-here>
+
+________________________________________________________________________________________________________________________________________________________
+___________________________________________________________________________Namespace____________________________________________________________________
+
+k create namespace namespace_name                                                        create namespace
+k config set-context --current                   --namespace=dev                         Set "dev" as current namespace
+k config set-context $(k config current-context) --namespace=dev                                
+k config view | grep(findstr) namespace                                                  get current namespace
 
 
 
 
 kubectl run nginx --image=nginx --restart=Never --dry-run -o yaml    Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
 
+________________________________________________________________________________________________________________________________________________________
+______________________________________________________________________ Deployment_______________________________________________________________________
 
---- Deployment ---
+kubectl create deployment nginx-dep --image=nginx                                                Create a deployment
 
-kubectl create deployment --image=nginx nginx                       Create a deployment
-
-kubectl create deployment --image=nginx nginx --dry-run -o yaml > nginx-deployment.yaml     Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)
-kubectl scale deployment/nginx-deployment --replicas=10     scale replicas
+kubectl create deployment nginx-dep --image=nginx  --dry-run -o yaml > nginx-deployment.yaml     Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)
+kubectl scale deployment/nginx-dep --replicas=10                                                 scale replicas
 
 
 --- Service ---
