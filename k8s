@@ -66,7 +66,7 @@ k create namespace namespace_name                                               
 k config set-context --current                   --namespace=dev                         Set "dev" as current namespace
 k config set-context $(k config current-context) --namespace=dev                                
 k config view | grep(findstr) namespace                                                  get current namespace
-
+k get pods --all-namespaces                                                              get pod from all namespaces
 
 
 
@@ -109,7 +109,21 @@ Both the above commands have their own challenges. While one of it cannot accept
 
 
 kubectl get pod webapp -o yaml > my-new-pod.yaml    -  експортировать в yaml файл
+_____________________________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________Command Dockerfile_________________________________________________________________________
+        DOCKERFILE              DOCKERFILE             DOCKERFILE               
 
+ENTRYPOINT["sleep"]   =    CMD["sleep","5"]       =    CMD sleep 5                CMD sleep 5    ->  can change  ->         docker run ubuntu-sleeper sleep 10
+CMD["5"]                 (["command","param1"]) 
+                                                                                  ENTRYPOINT["sleep"]
+                                                                                  CMD["5"]               ->  can change  -> docker run ubuntu-sleeper 10
+                                                                                  
+                                                                                  ENTRYPOINT["sleep"]
+                                                                                  CMD["5"]               ->  can change  -> docker run --entrypoint sleep2.0 ubuntu-sleeper 10
+                                                                                  
+     - - - - - - - - -- - - - - - - - - - - - -- - - - - - - -- - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+     
+     
      DOCKERFILE              k8s file
 
 ENTRYPOINT["sleep"]   ->    command:["sleep2"]
