@@ -120,7 +120,18 @@ CMD["5"]                 (["command","param1"])
                                                                                   
                                                                                   ENTRYPOINT["sleep"]
                                                                                   CMD["5"]               ->  can change  -> docker run --entrypoint sleep2.0 ubuntu-sleeper 10
-                                                                                  
+   
+   __________________________________________________________________________________________________________________________________________________________________________
+   _________________________________________________________________________________Secret___________________________________________________________________________________
+   
+   kubectl create secret generic db-secret --from-literal=DB_Host=sql01 --from-literal=DB_User=root --from-literal=DB_Password=password123
+       
+       
+    envFrom:
+    - secretRef:
+        name: db-secret
+   
+   
      - - - - - - - - -- - - - - - - - - - - - -- - - - - - - -- - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
      
      
@@ -132,5 +143,7 @@ CMD["5"]              ->    arg:["10"]
 
 Add file (folder) into conteiner from machine 
 kubectl cp .\Downloads\app.zip rte-c759b4c4b-skmp7:/home/app.zip  --insecure-skip-tls-verify=true
+
+
 
 
