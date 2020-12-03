@@ -46,6 +46,8 @@ docker image rm $(docker image ls -a -q)                удаляет все о
 docker tag <image> username/repository:tag              указать тег <image> для загрузки на registry
 docker push username/repository:tag                     закачать указаный тегированый образ registry
 docker run username/repository:tag                      запустить образ с указаного registry
+docker commit -m "Added json gem" -a "Kate Smith" \     создать образ на основе контейнера 
+0b2616b0e5a8 ouruser/sinatra:v2
                                           контейнер
 
 docker container ls                                     отображает все запущеные контейненры
