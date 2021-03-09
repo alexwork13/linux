@@ -48,7 +48,7 @@ ________________________________________________________________________________
 
 __________________________________________________________________________ ReplicaSet___________________________________________________________________
 k create -f replicaset-file.yaml
-k scale replicaset --replicas=2 replicaset(type) new-replica(name)
+k scale replicaset --replicas=2 replicaset-name
 k scale --replicas=2 -f replicaset-file.yaml
 k replace -f replicaset-file.yaml
 
