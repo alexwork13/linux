@@ -21,10 +21,10 @@ ________________________________________________________________________________
                                                  ____________________________________________POD_________________________________________________
 k get pods
 k get pods -o wide                                                   show on what node run pod
-k get nodes
+
 
 k run hello --image=nginx --port=80 -l tier=db                       создать под и окрыть порт 80, лейбл -l
-k port-forward hello 7777:80                                         пробросить порт 80 контейнера в 7777 порт хоста (ноды)
+k port-forward --address 10.10.10.1 hello 7777:80      пробросить порт 80 контейнера в 7777 порт хоста (ноды --address 10.10.10.1)
 kubectl run redis --image=redis:alpine -l tier=db
 
 k describe pods hello
