@@ -1,3 +1,6 @@
+#delete all evicted pods in namespace (kp = --namespace=prod)
+kp get po | grep -i evicted | cut -d' ' -f 1 | while IFS= read -r line; do kp delete po $line; done
+
 powershell 
 set-alias k kubectl
 
